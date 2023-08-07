@@ -64,7 +64,7 @@ app.get('/schedule_event', async (req, res) => {
     auth: oauth2Client,
     requestBody: {
       summary: 'Space Saver Test Event',
-      description: 'Booking an test event',
+      description: 'Booking a test event',
       start: {
         dateTime: dayjs(new Date()).add(1, 'day').toISOString(),
         timeZone: 'America/Los_Angeles',
@@ -83,6 +83,41 @@ app.get('/schedule_event', async (req, res) => {
   });
 
 });
+
+
+/* updating scheduled event */
+/*
+app.put('/update_event/:eventId', async (req, res) => {
+  const eventId = req.params.eventId;
+  try {
+    await calendar.events.update({
+      calendarId: 'primary',
+      eventId: eventId,
+      auth: oauth2Client,
+      requestBody: {
+        summary: 'Updated Space Saver Test Event',
+        description: 'Updating booking a test event',
+        start: {
+          dateTime: dayjs(new Date()).add(2, 'day').toISOString(),
+          timeZone: 'America/Los_Angeles',
+        },
+        end: {
+          dateTime: dayjs(new Date()).add(2, 'day').add(1, 'hour').toISOString(),
+          timeZone: 'America/Los_Angeles',
+        },
+      },
+    });
+    res.status(200).send({
+      msg: "Event updated successfully",
+    });
+  } catch (error) {
+    console.error("Error updating event:", error);
+    res.status(500).send({
+      error: "An error occurred while updating the event",
+    });
+  }
+});
+*/
 
 
 app.listen(PORT, () => {
